@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductCardComponent } from './product-card.component';
-import { PRODUCTS } from '../data/products';
+import { Product } from '../models/product.model';
+import { ProductItemComponent } from './product-item.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductCardComponent],
+  imports: [CommonModule, ProductItemComponent],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-  products = PRODUCTS;
+  @Input() products: Product[] = [];
+
+  removeProduct(productId: number) {
+    this.products = this.products.filter((p) => p.id !== productId);
+  }
 }

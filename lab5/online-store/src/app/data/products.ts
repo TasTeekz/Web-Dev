@@ -1,6 +1,6 @@
 import { Product } from '../models/product.model';
 
-export const PRODUCTS: Product[] = [
+const rawProducts = [
   {
     id: 145467625,
     name: 'Apple iPhone 17 Pro 256Gb оранжевый',
@@ -212,3 +212,9 @@ export const PRODUCTS: Product[] = [
     link: 'https://kaspi.kz/shop/p/apple-iphone-17-256gb-chernyi-145466647/?c=750000000',
   },
 ];
+
+export const PRODUCTS: Product[] = rawProducts.map((p) => ({
+  ...p,
+  likes: 0,
+  categoryId: 1,
+}));

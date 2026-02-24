@@ -1,6 +1,8 @@
 <article class="card">
   <div class="media">
-    <button class="nav left" type="button" (click)="prevImage()" aria-label="Previous image">‹</button>
+    <button class="nav left" type="button" (click)="prevImage()" aria-label="Previous image">
+      ‹
+    </button>
 
     <img
       class="main-img"
@@ -28,13 +30,13 @@
   <div class="content">
     <h3 class="title" (click)="openKaspi()">{{ product.name }}</h3>
     <p
-  class="desc"
-  [class.expanded]="isDescExpanded"
-  (click)="toggleDescription($event)"
-  title="Нажмите, чтобы раскрыть/свернуть"
->
-  {{ product.description }}
-</p>
+      class="desc"
+      [class.expanded]="isDescExpanded"
+      (click)="toggleDescription($event)"
+      title="Нажмите, чтобы раскрыть/свернуть"
+    >
+      {{ product.description }}
+    </p>
 
     <div class="row">
       <div class="price">{{ formatKzt(product.price) }}</div>
@@ -47,6 +49,11 @@
       </div>
     </div>
 
+    <div class="likes">
+      <span>❤️ {{ product.likes }}</span>
+      <button type="button" class="btn" (click)="like()">Like</button>
+    </div>
+
     <div class="actions">
       <a class="link" [href]="product.link" target="_blank" rel="noopener noreferrer">
         Open on Kaspi
@@ -54,6 +61,7 @@
 
       <button type="button" class="btn" (click)="shareWhatsApp()">Share WhatsApp</button>
       <button type="button" class="btn" (click)="shareTelegram()">Share Telegram</button>
+      <button type="button" class="btn delete" (click)="deleteProduct()">Delete</button>
     </div>
   </div>
 </article>

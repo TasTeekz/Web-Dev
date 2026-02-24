@@ -1,16 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../models/product.model';
 
 @Component({
-  selector: 'app-product-card',
+  selector: 'app-product-item',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css'],
+  templateUrl: './product-item.component.html',
+  styleUrls: ['./product-item.component.css'],
 })
-export class ProductCardComponent {
+export class ProductItemComponent implements OnInit {
   @Input({ required: true }) product!: Product;
+  @Output() delete = new EventEmitter<number>();
 
   selectedImage = '';
   isDescExpanded = false;
@@ -70,5 +71,15 @@ export class ProductCardComponent {
   toggleDescription(event: MouseEvent) {
     event.stopPropagation();
     this.isDescExpanded = !this.isDescExpanded;
+  }
+
+  like() {
+    this.product.likes++;
+  }
+
+  deleteProduct() {
+    if (confirm('Are you sure?')) {
+      this.delete.emit(this.product.id);
+    }
   }
 }

@@ -3,5 +3,5 @@ import { ProductListComponent } from './products/product-list.component';
 
 export const routes: Routes = [
   { path: '', component: ProductListComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];

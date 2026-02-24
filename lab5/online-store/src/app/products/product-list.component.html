@@ -1,11 +1,9 @@
-<section class="page">
-  <header class="header">
-    <h1>Online Store</h1>
-  </header>
+@if (products.length === 0) {
+  <p class="empty">No products in this category</p>
+}
 
-  <div class="grid">
-    @for (p of products; track p.id) {
-      <app-product-card [product]="p" />
-    }
-  </div>
-</section>
+<div class="grid">
+  @for (product of products; track product.id) {
+    <app-product-item [product]="product" (delete)="removeProduct($event)"> </app-product-item>
+  }
+</div>
