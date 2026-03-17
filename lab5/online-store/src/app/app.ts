@@ -22,7 +22,7 @@ export class AppComponent {
   constructor(private productService: ProductService) {
     this.categories = this.productService.getCategories();
     this.allProducts = this.shuffleArray([...this.productService.products]);
-    this.productsToShow = [...this.allProducts]; // показать ВСЕ сразу
+    this.productsToShow = [...this.allProducts];
   }
 
   private shuffleArray<T>(array: T[]): T[] {
